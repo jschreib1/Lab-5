@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-import stepper
+from stepper import Stepper
 GPIO.setmode(GPIO.BCM)
 pins = [18,21,22,23] # controller inputs: in1, in2, in3, in4
 for pin in pins:
