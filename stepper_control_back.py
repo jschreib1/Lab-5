@@ -6,7 +6,7 @@ GPIO.setmode(GPIO.BCM)
 pins = [18,21,22,23] # controller inputs: in1, in2, in3, in4
 for pin in pins:
   GPIO.setup(pin, GPIO.OUT, initial=0)
-GPIO.setup(12, GPIO.IN, initial=0)
+GPIO.setup(12, GPIO.IN)
 # Define the pin sequence for counter-clockwise motion, noting that
 # two adjacent phases must be actuated together before stepping to
 # a new phase so that the rotor is pulled in the right direction:
