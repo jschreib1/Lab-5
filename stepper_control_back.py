@@ -39,7 +39,9 @@ def moveSteps(steps, dir):
 
 try:
   myStepper = Stepper(0X40)
-  
+  myStepper.zero()
+  myStepper.goAngle(90)
+
 except Exception as e:
   print(e)
   pass
