@@ -10,10 +10,10 @@ class Stepper:
     return val
 
   def zero(val):
-  while val > 125:
-    moveSteps(1,1)
-  current_angle = 0
-  return current_angle
+    while val > 125:
+      moveSteps(1,1)
+    current_angle = 0
+    return current_angle
 
 def goAngle(angle):
   if angle > current_angle:
