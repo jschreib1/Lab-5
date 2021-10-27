@@ -40,7 +40,7 @@ def moveSteps(steps, dir):
 
 try:
   myADC = PCF8591(0x48)
-  light_level = Stepper.getval()
+  light_level = Stepper.getval(self)
   myStepper = Stepper(0X48)
   myStepper.zero(light_level)
   myStepper.goAngle(90)
