@@ -7,9 +7,9 @@ def delay_us(tus): # use microseconds to improve time resolution
 
 def halfstep(dir):
   #dir = +/- 1 (ccw /cw)
-  stepper.state += dir
-  if stepper.state > 7: Stepper.state = 0
-  elif stepper.state < 0: Stepper.state = 7
+  Stepper.state += dir
+  if Stepper.state > 7: Stepper.state = 0
+  elif Stepper.state < 0: Stepper.state = 7
   for pin in range(4):
     GPIO.output(pins[pin], sequence[Stepper.state][pin])
 
