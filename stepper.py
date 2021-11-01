@@ -1,5 +1,23 @@
 from PCF import PCF8591
 
+def delay_us(tus): # use microseconds to improve time resolution
+  endTime = time.time() + float(tus)/ float(1E6)
+  while time.time() < endTime:
+    pass
+
+def halfstep(dir):
+  #dir = +/- 1 (ccw /cw)
+  state += dir
+  if state > 7: state = 0
+  elif state < 0: state = 7
+  for pin in range(4):
+    GPIO.output(pins[pin], sequence[state][pin])
+
+def moveSteps(steps, dir):
+  # move the actuation sequence a given number of half steps
+  for step in steps:
+    halfstep(dir)
+
 class Stepper:
   def __init__(self, address):
     self.PCF8591 = PCF8591(address)

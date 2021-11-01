@@ -17,27 +17,6 @@ sequence = [ [1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],
 state = 0 # current position in stator sequence
 current_angle = 0
 
-
-def delay_us(tus): # use microseconds to improve time resolution
-  endTime = time.time() + float(tus)/ float(1E6)
-  while time.time() < endTime:
-    pass
-
-def halfstep(dir):
-  #dir = +/- 1 (ccw /cw)
-  state += dir
-  if state > 7: state = 0
-  elif state < 0: state = 7
-  for pin in range(4):
-    GPIO.output(pins[pin], sequence[state][pin])
-
-def moveSteps(steps, dir):
-  # move the actuation sequence a given number of half steps
-  for step in steps:
-    halfstep(dir)
-
-
-
 try:
   myADC = PCF8591(0x48)
   myStepper = Stepper(0X48)
