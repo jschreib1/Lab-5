@@ -4,6 +4,7 @@ class Stepper:
   def __init__(self, address):
     self.PCF8591 = PCF8591(address)
     #PCF8591(0x40)
+  
   def getval(self):
     #print(PCF8591.read(0))
     val = self.PCF8591.read(0)
