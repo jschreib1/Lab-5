@@ -29,8 +29,8 @@ class Stepper:
     return val
 
 #debugging
-'''
   def zero(self, val):
+    '''
     while val > 125:
       moveSteps(512,1)
     current_angle = 0
