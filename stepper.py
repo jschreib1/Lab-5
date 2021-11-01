@@ -35,6 +35,7 @@ class Stepper:
       moveSteps(512,1)
       '''
     current_angle = 0
+    print(current_angle)
     return current_angle
 
 def goAngle(self, angle):
