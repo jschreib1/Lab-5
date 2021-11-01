@@ -1,3 +1,4 @@
+import RPi.GPIO as GPIO
 from PCF import PCF8591
 
 def delay_us(tus): # use microseconds to improve time resolution
