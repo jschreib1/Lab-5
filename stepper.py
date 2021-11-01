@@ -9,13 +9,13 @@ class Stepper:
     val = self.PCF8591.read(0)
     return val
 
-  def zero(val):
+  def zero(self, val):
     while val > 125:
       moveSteps(512,1)
     current_angle = 0
     return current_angle
 
-def goAngle(angle):
+def goAngle(self, angle):
   turn_angle = angle - current_angle
   if abs(turn_angle) < 180:
     moveSteps(angle,1)
