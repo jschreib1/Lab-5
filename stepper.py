@@ -16,7 +16,8 @@ def halfstep(dir):
 def moveSteps(steps, dir):
   # move the actuation sequence a given number of half steps
   for step in steps:
-    halfstep(dir)
+    #halfstep(dir)
+    print(step)
 
 class Stepper:
   def __init__(self, address):
