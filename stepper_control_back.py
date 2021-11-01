@@ -22,7 +22,7 @@ try:
   myStepper = Stepper(0X48)
   light_level = myStepper.getval()
   #myStepper.zero(light_level)
-  myStepper.goAngle(90)
+  #myStepper.goAngle(90)
 
 except Exception as e:
   print(e)

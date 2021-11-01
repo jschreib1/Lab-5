@@ -24,7 +24,7 @@ class Stepper:
     #PCF8591(0x40)
   
   def getval(self):
-    #print(PCF8591.read(0))
+    print(PCF8591.read(0))
     val = self.PCF8591.read(0)
     return val
 
