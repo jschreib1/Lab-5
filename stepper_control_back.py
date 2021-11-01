@@ -12,8 +12,7 @@ GPIO.setup(12, GPIO.IN)
 # two adjacent phases must be actuated together before stepping to
 # a new phase so that the rotor is pulled in the right direction:
 
-state = 0 # current position in stator sequence
-current_angle = 0
+
 
 sequence = [ [1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],
 [0,0,1,0],[0,0,1,1],[0,0,0,1],[1,0,0,1] ]

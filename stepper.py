@@ -24,6 +24,9 @@ class Stepper:
     self.PCF8591 = PCF8591(address)
     #PCF8591(0x40)
   
+  state = 0 # current position in stator sequence
+  current_angle = 0
+  
   def getval(self):
     print(self.PCF8591.read(0))
     val = self.PCF8591.read(0)
