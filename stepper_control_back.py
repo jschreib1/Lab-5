@@ -7,7 +7,7 @@ import time
 
 try:
   myADC = PCF8591(0x48)
-  myStepper = Stepper(pins)
+  myStepper = Stepper(Stepper.pins)
   light_level = myStepper.getval()
   myStepper.zero(light_level)
   #myStepper.goAngle(90)
