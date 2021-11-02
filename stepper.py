@@ -31,6 +31,20 @@ class Stepper:
     val = self.PCF8591.read(0)
     return val
 
+  def halfstep(self, dir):
+    #dir = +/- 1 (ccw /cw)
+    Stepper.state += dir
+    if Stepper.state > 7: Stepper.state = 0
+    elif Stepper.state < 0: Stepper.state = 7
+    for pin in range(4):
+      GPIO.output(pins[pin], sequence[Stepper.state][pin])
+
+  def moveSteps(self, steps, dir):
+    # move the actuation sequence a given number of half steps
+    for step in range(steps):
+      halfstep(dir)
+      #print(step)      
+
   def zero(self, val):
     light = val
     while light < 200:
@@ -52,16 +66,4 @@ class Stepper:
     while time.time() < endTime:
       pass
 
-  def halfstep(self, dir):
-    #dir = +/- 1 (ccw /cw)
-    Stepper.state += dir
-    if Stepper.state > 7: Stepper.state = 0
-    elif Stepper.state < 0: Stepper.state = 7
-    for pin in range(4):
-      GPIO.output(pins[pin], sequence[Stepper.state][pin])
-
-  def moveSteps(self, steps, dir):
-    # move the actuation sequence a given number of half steps
-    for step in range(steps):
-      halfstep(dir)
-      #print(step)      
+  
