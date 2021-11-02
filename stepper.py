@@ -13,7 +13,7 @@ class Stepper:
     self.state = 0 # current position in stator sequence
     self.current_angle = 0
     GPIO.setmode(GPIO.BCM)
-    pins = [18,21,22,23] # controller inputs: in1, in2, in3, in4
+    self.pins = [18,21,22,23] # controller inputs: in1, in2, in3, in4
     for pin in pins:
       GPIO.setup(pin, GPIO.OUT, initial=0)
     GPIO.setup(12, GPIO.IN)
