@@ -1,6 +1,5 @@
 import RPi.GPIO as GPIO
 import time
-from stepper import Stepper
 from PCF import PCF8591
 GPIO.setwarnings(False)
 

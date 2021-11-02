@@ -1,5 +1,7 @@
 import RPi.GPIO as GPIO
 from PCF import PCF8591
+from stepper import Stepper
+import time
 
 
 
