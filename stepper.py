@@ -1,32 +1,31 @@
 import RPi.GPIO as GPIO
+import time
+from stepper import Stepper
 from PCF import PCF8591
+GPIO.setwarnings(False)
 
-def delay_us(tus): # use microseconds to improve time resolution
-  endTime = time.time() + float(tus)/ float(1E6)
-  while time.time() < endTime:
-    pass
 
-def halfstep(dir):
-  #dir = +/- 1 (ccw /cw)
-  Stepper.state += dir
-  if Stepper.state > 7: Stepper.state = 0
-  elif Stepper.state < 0: Stepper.state = 7
-  for pin in range(4):
-    GPIO.output(pins[pin], sequence[Stepper.state][pin])
 
-def moveSteps(steps, dir):
-  # move the actuation sequence a given number of half steps
-  for step in range(steps):
-    halfstep(dir)
-    #print(step)
 
 class Stepper:
   def __init__(self, address):
     self.PCF8591 = PCF8591(address)
     #PCF8591(0x40)
-  
-  state = 0 # current position in stator sequence
-  current_angle = 0
+    self.state = 0 # current position in stator sequence
+    self.current_angle = 0
+    GPIO.setmode(GPIO.BCM)
+    pins = [18,21,22,23] # controller inputs: in1, in2, in3, in4
+    for pin in pins:
+      GPIO.setup(pin, GPIO.OUT, initial=0)
+    GPIO.setup(12, GPIO.IN)
+    # Define the pin sequence for counter-clockwise motion, noting that
+    # two adjacent phases must be actuated together before stepping to
+    # a new phase so that the rotor is pulled in the right direction:
+
+
+
+    sequence = [ [1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],
+    [0,0,1,0],[0,0,1,1],[0,0,0,1],[1,0,0,1] ]
   
   def getval(self):
     print(self.PCF8591.read(0))
@@ -36,16 +35,34 @@ class Stepper:
   def zero(self, val):
     light = val
     while light < 200:
-      moveSteps(512,1)
+      moveSteps(10,1)
       light = self.PCF8591.read(0)
     Stepper.current_angle = 0
     print(Stepper.current_angle)
     return current_angle
 
-def goAngle(self, angle):
-  turn_angle = angle - Stepper.current_angle
-  if abs(turn_angle) < 180:
-    moveSteps(angle,1)
-  else:
-    moveSteps(angle,-1)
-      
+  def goAngle(self, angle):
+    turn_angle = angle - Stepper.current_angle
+    if abs(turn_angle) < 180:
+      moveSteps(angle,1)
+    else:
+      moveSteps(angle,-1)
+
+  def delay_us(self, tus): # use microseconds to improve time resolution
+    endTime = time.time() + float(tus)/ float(1E6)
+    while time.time() < endTime:
+      pass
+
+  def halfstep(self, dir):
+    #dir = +/- 1 (ccw /cw)
+    Stepper.state += dir
+    if Stepper.state > 7: Stepper.state = 0
+    elif Stepper.state < 0: Stepper.state = 7
+    for pin in range(4):
+      GPIO.output(pins[pin], sequence[Stepper.state][pin])
+
+  def moveSteps(self, steps, dir):
+    # move the actuation sequence a given number of half steps
+    for step in range(steps):
+      halfstep(dir)
+      #print(step)      
