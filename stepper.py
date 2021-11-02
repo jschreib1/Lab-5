@@ -14,7 +14,7 @@ class Stepper:
     self.current_angle = 0
     GPIO.setmode(GPIO.BCM)
     self.pins = [18,21,22,23] # controller inputs: in1, in2, in3, in4
-    for pin in pins:
+    for pin in self.pins:
       GPIO.setup(pin, GPIO.OUT, initial=0)
     GPIO.setup(12, GPIO.IN)
     # Define the pin sequence for counter-clockwise motion, noting that
