@@ -14,7 +14,7 @@ try:
   while True:
     myStepper = Stepper(0x48)
     with open("angle.txt", 'r') as f:
-      json.load(f)
+      data = json.load(f)
       angle = int(data['Angle'])
       pressed = data['Button']
 
