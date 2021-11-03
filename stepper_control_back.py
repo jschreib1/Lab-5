@@ -7,7 +7,7 @@ import time
 
 try:
   myStepper = Stepper(0x48)
-  #myStepper.zero()
+  myStepper.zero()
   myStepper.goAngle(90)
 
 except Exception as e:
