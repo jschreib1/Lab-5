@@ -50,9 +50,12 @@ class Stepper:
   def zero(self, val):
     light = val
     GPIO.output(self.led_pin, 1)
+    '''
     while light < 200:
       moveSteps(10,1)
       light = self.PCF8591.read(0)
+      '''
+    print(self.PCF8591.read(0))
     GPIO.output(self.led_pin, 0)
     Stepper.current_angle = 0
     print(Stepper.current_angle)
