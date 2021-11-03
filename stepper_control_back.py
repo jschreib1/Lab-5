@@ -22,24 +22,19 @@ try:
       myStepper.zero()
     elif pressed == "Change Angle":
       myStepper.goAngle(angle)
+    params = {
+    "api_key":api,
+    1: angle}
+    #2: Button,}
+    params = urlencode(params)   # put dict data into a GET string
+    # add "?" to URL and append with parameters in GET string:
+    url = "https://api.thingspeak.com/update?" + params
+    response = urlopen(url)      # open the URL to send the request
+    print(response.status, response.reason)  # display the response
+    print(response.read()) # display response page data
+    time.sleep(16)    # 15 sec minimum
 
 except Exception as e:
   print(e)
   pass
-
-params = {
-    "api_key":api,
-    1: angle}
-    #2: Button,}
-params = urlencode(params)   # put dict data into a GET string
-
-  # add "?" to URL and append with parameters in GET string:
-url = "https://api.thingspeak.com/update?" + params
-try:
-  response = urlopen(url)      # open the URL to send the request
-  print(response.status, response.reason)  # display the response
-  print(response.read()) # display response page data
-  time.sleep(16)    # 15 sec minimum
-except Exception as e:
-  print(e)
 GPIO.cleanup()
