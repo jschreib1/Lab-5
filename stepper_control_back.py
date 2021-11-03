@@ -11,6 +11,7 @@ try:
   light_level = myStepper.getval()
   while True:
     myStepper.halfstep(1)
+    print('hello')
   myStepper.zero()
   #myStepper.goAngle(90)
 
