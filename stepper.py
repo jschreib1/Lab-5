@@ -25,7 +25,7 @@ class Stepper:
 
 
 
-    sequence = [ [1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],
+    self.sequence = [ [1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],
     [0,0,1,0],[0,0,1,1],[0,0,0,1],[1,0,0,1] ]
   
   def getval(self):
@@ -39,7 +39,7 @@ class Stepper:
     if self.state > 7: self.state = 0
     elif self.state < 0: self.state = 7
     for pin in range(4):
-      GPIO.output(self.pins[pin], sequence[self.state][pin])
+      GPIO.output(self.pins[pin], self.sequence[self.state][pin])
 
   def moveSteps(self, steps, dir):
     # move the actuation sequence a given number of half steps
