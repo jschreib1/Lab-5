@@ -58,7 +58,7 @@ class Stepper:
       print(self.PCF8591.read(0))
     GPIO.output(Stepper.led_pin, 0)
     Stepper.current_angle = 0
-    print(Stepper.current_angle)
+    #print(Stepper.current_angle)
 
   def goAngle(self, angle):
     turn_angle = int((angle - Stepper.current_angle)/float(360/4096))
