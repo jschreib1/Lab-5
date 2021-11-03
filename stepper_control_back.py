@@ -34,12 +34,12 @@ params = {
 params = urlencode(params)   # put dict data into a GET string
 
   # add "?" to URL and append with parameters in GET string:
-  url = "https://api.thingspeak.com/update?" + params
-  try:
-    response = urlopen(url)      # open the URL to send the request
-    print(response.status, response.reason)  # display the response
-    print(response.read()) # display response page data
-    time.sleep(16)    # 15 sec minimum
-  except Exception as e:
-    print(e)
+url = "https://api.thingspeak.com/update?" + params
+try:
+  response = urlopen(url)      # open the URL to send the request
+  print(response.status, response.reason)  # display the response
+  print(response.read()) # display response page data
+  time.sleep(16)    # 15 sec minimum
+except Exception as e:
+  print(e)
 GPIO.cleanup()
