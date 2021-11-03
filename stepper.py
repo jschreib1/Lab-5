@@ -13,7 +13,7 @@ class Stepper:
     self.state = 0 # current position in stator sequence
     self.current_angle = 0
     GPIO.setmode(GPIO.BCM)
-    self.pins = [18,21,22,23] # controller inputs: in1, in2, in3, in4
+    self.pins = [16,18,21,22,23] # controller inputs: in1, in2, in3, in4
     for pin in self.pins:
       GPIO.setup(pin, GPIO.OUT, initial=0)
     GPIO.setup(12, GPIO.IN)
@@ -37,7 +37,7 @@ class Stepper:
     if Stepper.state > 7: Stepper.state = 0
     elif Stepper.state < 0: Stepper.state = 7
     for pin in range(4):
-      GPIO.output(pins[pin], sequence[Stepper.state][pin])
+      GPIO.output(self.pins[pin], sequence[Stepper.state][pin])
 
   def moveSteps(self, steps, dir):
     # move the actuation sequence a given number of half steps
@@ -47,9 +47,11 @@ class Stepper:
 
   def zero(self, val):
     light = val
+    self.pins[0] = 1
     while light < 200:
       moveSteps(10,1)
       light = self.PCF8591.read(0)
+    self.pins[0] = 0
     Stepper.current_angle = 0
     print(Stepper.current_angle)
     return current_angle
