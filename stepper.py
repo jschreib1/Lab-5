@@ -28,7 +28,10 @@ class Stepper:
     # a new phase so that the rotor is pulled in the right direction:
 
 
-
+  def delay_us(self, tus): # use microseconds to improve time resolution
+    endTime = time.time() + float(tus)/ float(1E6)
+    while time.time() < endTime:
+      pass
     
   
   def getval(self):
@@ -43,6 +46,7 @@ class Stepper:
     elif Stepper.state < 0: Stepper.state = 7
     for pin in range(4):
       GPIO.output(Stepper.pins[pin], Stepper.sequence[Stepper.state][pin])
+    self.delay_us(1000)
 
   def moveSteps(self, steps, dir):
     # move the actuation sequence a given number of half steps
@@ -68,9 +72,6 @@ class Stepper:
     else:
       self.moveSteps(angle,-1)
 
-  def delay_us(self, tus): # use microseconds to improve time resolution
-    endTime = time.time() + float(tus)/ float(1E6)
-    while time.time() < endTime:
-      pass
+ 
 
   
