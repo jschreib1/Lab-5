@@ -33,11 +33,6 @@ class Stepper:
     while time.time() < endTime:
       pass
     
-  
-  def getval(self):
-    print(self.PCF8591.read(0))
-    val = self.PCF8591.read(0)
-    return val
 
   def halfstep(self, dir):
     #dir = +/- 1 (ccw /cw)
