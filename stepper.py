@@ -47,8 +47,8 @@ class Stepper:
       halfstep(dir)
       #print(step)      
 
-  def zero(self, val):
-    light = val
+  def zero(self):
+    light = self.PCF8591.read(0)
     GPIO.output(self.led_pin, 1)
     '''
     while light < 200:
