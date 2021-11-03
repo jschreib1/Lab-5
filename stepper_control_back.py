@@ -29,7 +29,7 @@ except Exception as e:
 
 params = {
     "api_key":api,
-    1: angle,
+    1: angle}
     #2: Button,}
 params = urlencode(params)   # put dict data into a GET string
 
