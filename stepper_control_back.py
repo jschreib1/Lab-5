@@ -13,6 +13,7 @@ api = "PWRX31PF18M31AG0"
 try:
   while True:
     myStepper = Stepper(0x48)
+    print(hello)
     with open("angle.txt", 'r') as f:
       data = json.load(f)
       print(data)
