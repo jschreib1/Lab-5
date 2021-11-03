@@ -31,7 +31,7 @@ params = {
     "api_key":api,
     1: Angle,
     2: Button,}
-  params = urlencode(params)   # put dict data into a GET string
+params = urlencode(params)   # put dict data into a GET string
 
   # add "?" to URL and append with parameters in GET string:
   url = "https://api.thingspeak.com/update?" + params
