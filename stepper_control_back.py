@@ -15,6 +15,7 @@ try:
     myStepper = Stepper(0x48)
     with open("angle.txt", 'r') as f:
       data = json.load(f)
+      print(data)
     angle = data['Angle']
     pressed = data['Button']
 
