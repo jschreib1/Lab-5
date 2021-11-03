@@ -15,13 +15,13 @@ try:
     myStepper = Stepper(0x48)
     with open("angle.txt", 'r') as f:
       data = json.load(f)
-      angle = int(data['Angle'])
+      angle = data['Angle']
       pressed = data['Button']
 
     if pressed == "Find Motor Zero":
       myStepper.zero()
     elif pressed == "Change Angle":
-      myStepper.goAngle(angle)
+      myStepper.goAngle(int(angle))
     params = {
     "api_key":api,
     1: angle}
