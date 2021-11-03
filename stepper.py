@@ -47,11 +47,11 @@ class Stepper:
 
   def zero(self, val):
     light = val
-    self.pins[0] = 1
+    #self.pins[0] = 1
     while light < 200:
       moveSteps(10,1)
       light = self.PCF8591.read(0)
-    self.pins[0] = 0
+    #self.pins[0] = 0
     Stepper.current_angle = 0
     print(Stepper.current_angle)
     return current_angle
