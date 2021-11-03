@@ -6,7 +6,6 @@ import time
 
 
 try:
-  myADC = PCF8591(0x48)
   myStepper = Stepper(0x48)
   myStepper.zero()
   #myStepper.goAngle(90)
