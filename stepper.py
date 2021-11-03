@@ -35,11 +35,11 @@ class Stepper:
 
   def halfstep(self, dir):
     #dir = +/- 1 (ccw /cw)
-    Stepper.state += dir
-    if Stepper.state > 7: Stepper.state = 0
-    elif Stepper.state < 0: Stepper.state = 7
+    self.state += dir
+    if self.state > 7: self.state = 0
+    elif self.state < 0: self.state = 7
     for pin in range(4):
-      GPIO.output(self.pins[pin], sequence[Stepper.state][pin])
+      GPIO.output(self.pins[pin], sequence[self.state][pin])
 
   def moveSteps(self, steps, dir):
     # move the actuation sequence a given number of half steps
@@ -60,11 +60,11 @@ class Stepper:
     return self.current_angle
 
   def goAngle(self, angle):
-    turn_angle = angle - Stepper.current_angle
+    turn_angle = angle - self.current_angle
     if abs(turn_angle) < 180:
-      moveSteps(angle,1)
+      self.moveSteps(angle,1)
     else:
-      moveSteps(angle,-1)
+      self.moveSteps(angle,-1)
 
   def delay_us(self, tus): # use microseconds to improve time resolution
     endTime = time.time() + float(tus)/ float(1E6)
