@@ -15,8 +15,8 @@ try:
     myStepper = Stepper(0x48)
     with open("angle.txt", 'r') as f:
       data = json.load(f)
-      angle = data['Angle']
-      pressed = data['Button']
+    angle = data['Angle']
+    pressed = data['Button']
 
     if pressed == "Find Motor Zero":
       myStepper.zero()
