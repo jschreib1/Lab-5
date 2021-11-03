@@ -44,7 +44,7 @@ class Stepper:
   def moveSteps(self, steps, dir):
     # move the actuation sequence a given number of half steps
     for step in range(steps):
-      halfstep(dir)
+      self.halfstep(dir)
       #print(step)      
 
   def zero(self):
