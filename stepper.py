@@ -17,8 +17,8 @@ class Stepper:
     for pin in self.pins:
       GPIO.setup(pin, GPIO.OUT, initial=0)
     GPIO.setup(12, GPIO.IN)
-    led_pin = 16
-    GPIO.setup(led_pin, GPIO.OUT)
+    self.led_pin = 16
+    GPIO.setup(self.led_pin, GPIO.OUT)
     # Define the pin sequence for counter-clockwise motion, noting that
     # two adjacent phases must be actuated together before stepping to
     # a new phase so that the rotor is pulled in the right direction:
