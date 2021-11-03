@@ -13,7 +13,7 @@ api = "PWRX31PF18M31AG0"
 try:
   while True:
     myStepper = Stepper(0x48)
-    with open("angle.txt", 'r'):
+    with open("angle.txt", 'r') as f:
       json.load(f)
       angle = int(data['Angle'])
       pressed = data['Button']
@@ -29,8 +29,8 @@ except Exception as e:
 
 params = {
     "api_key":api,
-    1: Angle,
-    2: Button,}
+    1: angle,
+    #2: Button,}
 params = urlencode(params)   # put dict data into a GET string
 
   # add "?" to URL and append with parameters in GET string:
