@@ -4,6 +4,10 @@ import cgi
 import json
 import cgitb
 import time
+from urllib.request import urlopen
+from urllib.parse import urlencode
+
+api = "PWRX31PF18M31AG0"
 cgitb.enable()
 
 print("Content-type: text/html\n\n")

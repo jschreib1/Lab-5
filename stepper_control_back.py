@@ -8,12 +8,12 @@ from urllib.parse import urlencode
 
 api = "PWRX31PF18M31AG0"
 
-print("11")
+#print("11")
 
 try:
   while True:
     myStepper = Stepper(0x48)
-    print("hello")
+    #print("hello")
     with open("angle.txt", 'r') as f:
       data = json.load(f)
       print(data)
