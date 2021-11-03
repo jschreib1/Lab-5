@@ -62,6 +62,7 @@ class Stepper:
 
   def goAngle(self, angle):
     turn_angle = int((angle - Stepper.current_angle)/float(360/4096))
+    print(turn_angle)
     if abs(turn_angle) < 180:
       self.moveSteps(turn_angle,1)
     else:
